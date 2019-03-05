@@ -16,10 +16,10 @@
   <h3>Выбор таблиц</h3>
   <ul>
     <li><a href="/publishingOffice">Издательство</a></li>
-    <li><a href="/AuthorServlet">Автор</a></li>
-    <li><a href="/BookServlet">Книга</a></li>
-    <li><a href="/BookAuthorServlet">Книга-Автор</a></li>
-    <li><a href="/ChapterServlet">Глава</a></li>
+    <li><a href="/author">Автор</a></li>
+    <li><a href="/book">Книга</a></li>
+    <li><a href="/bookAuthor">Книга-Автор</a></li>
+    <li><a href="/chapter">Глава</a></li>
 
   </ul>
 </div>

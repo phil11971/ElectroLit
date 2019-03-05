@@ -7,6 +7,10 @@ public class BookAuthorEntity {
     public BookAuthorEntity() {
     }
 
+    public BookAuthorEntity(int id_b) {
+        this.id_b = id_b;
+    }
+
     public BookAuthorEntity(int id_b, int id_a) {
         this.id_b = id_b;
         this.id_a = id_a;

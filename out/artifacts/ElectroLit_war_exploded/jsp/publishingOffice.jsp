@@ -14,11 +14,11 @@
     </head>
     <body>
 
-        <h3 align="center">Учитель</h3>
+        <h3 align="center">Издательство</h3>
         <ul class="menu-main">
-            <li ><a href="#">Добавить запись</a></li>
-            <li onclick="updateTeacher()"><a href="#">Изменить запись</a></li>
-            <li onclick="deletes()"><a href="#">Удалить запись</a></li>
+            <li onclick="window.location='/addPublishingOffice'"><a href="#">Добавить запись</a></li>
+            <li onclick="updatePO()"><a href="#">Изменить запись</a></li>
+            <li onclick="deletePO()"><a href="#">Удалить запись</a></li>
             <li>Сортировка</li>
         </ul>
         <table id="tables">
@@ -40,6 +40,47 @@
         <div align=center>
             <td><input class="submit" type="button" value="Назад" onclick= "window.location=''" ;></td>
         </div>
+        <script>
+            function getnumb() {
+                var count;
+                var z = document.getElementsByName("q");
+                var table = document.getElementById('tables');
+                for (var i = 0; i < z.length; i++) {
+                    if (z[i].checked) {
+                        count = i;
+                        break;
+                    }
+                }
+                return count;
+            }
+            function deletePO() {
+                var count = getnumb();
+                if (count == undefined) {
+                    alert("Выберите нужную строку!")
+                }
+                else {
+                //   alert(table.rows[count + 1].cells[i].innerHTML);
+                    var xhr = new XMLHttpRequest();
+                    var table = document.getElementById('tables');
+                    var body = 'action=' + 'delete' + '&id_po=' + encodeURIComponent(table.rows[count + 1].cells[1].innerHTML);
+                    xhr.open("POST", "/publishingOffice", false);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                    xhr.send(body);
+                    window.location = '/publishingOffice';
+                }
+            }
+            function updatePO() {
+                var count = getnumb();
+                if (count == undefined) {
+                    alert("Выберите нужную строку!")
+                }
+                var table = document.getElementById('tables');
+                var location = '/updatePublishingOffice?=';
+                location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
+                    +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML);
+                window.location = location;
 
+            }
+        </script>
     </body>
 </html>

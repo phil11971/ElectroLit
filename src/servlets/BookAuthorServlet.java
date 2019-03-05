@@ -1,7 +1,7 @@
 package servlets;
 
-import dao.BookDAO;
-import entities.BookEntity;
+import dao.BookAuthorDAO;
+import entities.BookAuthorEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,40 +13,36 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/book")
-public class BookServlet extends HttpServlet {
-    List<BookEntity> chapterEntityList;
+@WebServlet("/bookAuthor")
+public class BookAuthorServlet extends HttpServlet {
+    List<BookAuthorEntity> chapterEntityList;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
-            chapterEntityList = BookDAO.select();
+            chapterEntityList = BookAuthorDAO.select();
         }
         catch (SQLException e) {}
-        for(BookEntity te : chapterEntityList) {
+        for(BookAuthorEntity te : chapterEntityList) {
             ArrayList<String> s = new ArrayList<>();
             s.add(te.getId_b()+"");
-            s.add(te.getName()+"");
-            s.add(te.getYear_pub()+"");
-            s.add(te.getCnt()+"");
-            s.add(te.getPrice()+"");
-            s.add(te.getId_po()+"");
+            s.add(te.getId_a()+"");
             arrayLists.add(s);
         }
-        request.setAttribute("pagename","Book");
-        request.setAttribute("columnList",new String[]{"id книги","название","год","количество","цена", "id издательства"});
+        request.setAttribute("pagename","BookAuthor");
+        request.setAttribute("columnList",new String[]{"id книги","id автора"});
         request.setAttribute("tableList",arrayLists);
-        request.getRequestDispatcher("jsp/book.jsp").forward(request,response);
+        request.getRequestDispatcher("jsp/bookAuthor.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameter("action").equals("delete")) {
             long id_b = Long.parseLong(request.getParameter("id_b"));
-            BookEntity publishingOfficeEntity = new BookEntity((int)id_b);
+            BookAuthorEntity publishingOfficeEntity = new BookAuthorEntity((int)id_b);
             try {
-                BookDAO.delete(publishingOfficeEntity);
+                BookAuthorDAO.delete(publishingOfficeEntity);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

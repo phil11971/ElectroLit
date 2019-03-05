@@ -14,6 +14,10 @@ public class BookEntity {
     public BookEntity() {
     }
 
+    public BookEntity(int id_b) {
+        this.id_b = id_b;
+    }
+
     public BookEntity(int id_b, String name, int year_pub, int cnt, BigDecimal price, int id_po) {
         this.id_b = id_b;
         this.name = name;

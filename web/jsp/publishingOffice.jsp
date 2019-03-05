@@ -16,9 +16,9 @@
 
         <h3 align="center">Издательство</h3>
         <ul class="menu-main">
-            <li ><a href="#">Добавить запись</a></li>
-            <li onclick="updateTeacher()"><a href="#">Изменить запись</a></li>
-            <li onclick="deletes()"><a href="#">Удалить запись</a></li>
+            <li onclick="window.location='/addPublishingOffice'"><a href="#">Добавить запись</a></li>
+            <li onclick="updatePO()"><a href="#">Изменить запись</a></li>
+            <li onclick="deletePO()"><a href="#">Удалить запись</a></li>
             <li>Сортировка</li>
         </ul>
         <table id="tables">
@@ -53,7 +53,7 @@
                 }
                 return count;
             }
-            function deletes() {
+            function deletePO() {
                 var count = getnumb();
                 if (count == undefined) {
                     alert("Выберите нужную строку!")
@@ -68,6 +68,18 @@
                     xhr.send(body);
                     window.location = '/publishingOffice';
                 }
+            }
+            function updatePO() {
+                var count = getnumb();
+                if (count == undefined) {
+                    alert("Выберите нужную строку!")
+                }
+                var table = document.getElementById('tables');
+                var location = '/updatePublishingOffice?=';
+                location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
+                    +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML);
+                window.location = location;
+
             }
         </script>
     </body>

@@ -8,6 +8,10 @@ public class ChapterEntity {
     public ChapterEntity() {
     }
 
+    public ChapterEntity(int id_c) {
+        this.id_c = id_c;
+    }
+
     public ChapterEntity(int id_c, String name, int id_b) {
         this.id_c = id_c;
         this.name = name;

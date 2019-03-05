@@ -13,6 +13,10 @@ public class AuthorEntity {
     public AuthorEntity() {
     }
 
+    public AuthorEntity(int id_a) {
+        this.id_a = id_a;
+    }
+
     public AuthorEntity(int id_a, String lname, String fname, String patr, String mail, Date dob) {
         this.id_a = id_a;
         this.lname = lname;
