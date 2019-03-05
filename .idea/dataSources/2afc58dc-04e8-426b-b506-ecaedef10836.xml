@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ElectronicLiterature@localhost">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.14">
+    <root id="1">
+      <ServerVersion>11.1</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="ElectronicLiterature">
+      <ObjectId>16429</ObjectId>
+      <StateNumber>638</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>722</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="MusicShop">
+      <ObjectId>16393</ObjectId>
+      <StateNumber>570</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="4" parent="1" name="postgres">
+      <ObjectId>13012</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <StateNumber>567</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="5" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="6" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="8" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="9" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="10" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="11" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="12" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="13" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="14" parent="2" name="information_schema">
+      <ObjectId>12716</ObjectId>
+      <StateNumber>366</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="15" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <StateNumber>359</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="16" parent="2" name="pg_temp_1">
+      <ObjectId>11804</ObjectId>
+      <StateNumber>121</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="17" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <StateNumber>1</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="18" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11805</ObjectId>
+      <StateNumber>121</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="19" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <StateNumber>360</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>723</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="20" parent="2" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.bthandler</Handler>
+      <HandlerId>330</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="21" parent="2" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="22" parent="2" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.gisthandler</Handler>
+      <HandlerId>332</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="23" parent="2" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="24" parent="2" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.spghandler</Handler>
+      <HandlerId>334</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="25" parent="2" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <extension id="26" parent="2" name="plpgsql">
+      <ObjectId>12998</ObjectId>
+      <Comment>PL/pgSQL procedural language</Comment>
+      <StateNumber>519</StateNumber>
+      <Version>1.0</Version>
+      <SchemaName>pg_catalog</SchemaName>
+      <SchemaId>11</SchemaId>
+    </extension>
+    <sequence id="27" parent="19" name="AuthorSeq">
+      <ObjectId>16499</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>655</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="28" parent="19" name="BookSeq">
+      <ObjectId>16562</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>691</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="29" parent="19" name="ChapterSeq">
+      <ObjectId>16579</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>719</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="30" parent="19" name="POSeq">
+      <ObjectId>16437</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>640</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <table id="31" parent="19" name="Author">
+      <ObjectId>16494</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>697</StateNumber>
+    </table>
+    <table id="32" parent="19" name="Book">
+      <ObjectId>16439</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>689</StateNumber>
+    </table>
+    <table id="33" parent="19" name="BookAuthor">
+      <ObjectId>16501</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>689</StateNumber>
+    </table>
+    <table id="34" parent="19" name="Chapter">
+      <ObjectId>16569</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>717</StateNumber>
+    </table>
+    <table id="35" parent="19" name="PublishingOffice">
+      <ObjectId>16430</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>642</StateNumber>
+    </table>
+    <column id="36" parent="31" name="id_a">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>654</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="37" parent="31" name="lname">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>654</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="38" parent="31" name="fname">
+      <Position>3</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>654</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="31" name="patr">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>654</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="40" parent="31" name="mail">
+      <Position>6</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <StateNumber>654</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="41" parent="31" name="dob">
+      <Position>7</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>697</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <index id="42" parent="31" name="Author_pkey">
+      <ObjectId>16497</ObjectId>
+      <StateNumber>654</StateNumber>
+      <ColNames>id_a</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="31" name="Author_pkey">
+      <ObjectId>16498</ObjectId>
+      <StateNumber>654</StateNumber>
+      <ColNames>id_a</ColNames>
+      <UnderlyingIndexName>Author_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="32" name="id_b">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>642</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="45" parent="32" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>642</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="46" parent="32" name="cnt">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>642</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="47" parent="32" name="price">
+      <Position>5</Position>
+      <DataType>money|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>642</StateNumber>
+      <TypeId>790</TypeId>
+    </column>
+    <column id="48" parent="32" name="id_po">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>642</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="49" parent="32" name="year_pub">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>673</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="50" parent="32" name="cidb">
+      <ObjectId>16443</ObjectId>
+      <StateNumber>689</StateNumber>
+      <ColNames>id_b</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="32" name="cidb">
+      <ObjectId>16444</ObjectId>
+      <StateNumber>642</StateNumber>
+      <ColNames>id_b</ColNames>
+      <UnderlyingIndexName>cidb</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="32" name="cidpo">
+      <ObjectId>16445</ObjectId>
+      <StateNumber>642</StateNumber>
+      <ColNames>id_po</ColNames>
+      <RefTableId>16430</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>PublishingOffice</RefTableName>
+      <RefKeyName>cidpo</RefKeyName>
+      <RefColNames>id_po</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <check id="53" parent="32" name="Book_year_pub_check">
+      <ObjectId>16523</ObjectId>
+      <StateNumber>673</StateNumber>
+      <ColNames>year_pub</ColNames>
+      <Predicate>(year_pub &gt; 1000) AND (year_pub &lt; 3000)</Predicate>
+    </check>
+    <column id="54" parent="33" name="id_b">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>657</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="55" parent="33" name="id_a">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>657</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="56" parent="33" name="BookAuthor_pkey">
+      <ObjectId>16504</ObjectId>
+      <StateNumber>689</StateNumber>
+      <ColNames>id_b
+id_a</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="57" parent="33" name="BookAuthor_pkey">
+      <ObjectId>16505</ObjectId>
+      <StateNumber>657</StateNumber>
+      <ColNames>id_b
+id_a</ColNames>
+      <UnderlyingIndexName>BookAuthor_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="58" parent="33" name="BookAuthor_id_b_fkey">
+      <ObjectId>16534</ObjectId>
+      <StateNumber>678</StateNumber>
+      <ColNames>id_b</ColNames>
+      <RefTableId>16439</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>Book</RefTableName>
+      <RefKeyName>cidb</RefKeyName>
+      <RefColNames>id_b</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="59" parent="33" name="BookAuthor_id_a_fkey">
+      <ObjectId>16539</ObjectId>
+      <StateNumber>678</StateNumber>
+      <ColNames>id_a</ColNames>
+      <RefTableId>16494</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>Author</RefTableName>
+      <RefKeyName>Author_pkey</RefKeyName>
+      <RefColNames>id_a</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="60" parent="34" name="id_c">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>717</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="61" parent="34" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>717</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="62" parent="34" name="id_b">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>717</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="63" parent="34" name="Chapter_pkey">
+      <ObjectId>16572</ObjectId>
+      <StateNumber>717</StateNumber>
+      <ColNames>id_c</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="64" parent="34" name="Chapter_pkey">
+      <ObjectId>16573</ObjectId>
+      <StateNumber>717</StateNumber>
+      <ColNames>id_c</ColNames>
+      <UnderlyingIndexName>Chapter_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="65" parent="34" name="Chapter_id_b_fkey">
+      <ObjectId>16574</ObjectId>
+      <StateNumber>717</StateNumber>
+      <ColNames>id_b</ColNames>
+      <RefTableId>16439</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>Book</RefTableName>
+      <RefKeyName>cidb</RefKeyName>
+      <RefColNames>id_b</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="66" parent="35" name="id_po">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>639</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="67" parent="35" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>639</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="68" parent="35" name="legal_adr">
+      <Position>3</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>639</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="69" parent="35" name="cidpo">
+      <ObjectId>16433</ObjectId>
+      <StateNumber>639</StateNumber>
+      <ColNames>id_po</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="70" parent="35" name="PublishingOffice_name_name1_key">
+      <ObjectId>16435</ObjectId>
+      <StateNumber>639</StateNumber>
+      <ColNames>name
+name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="71" parent="35" name="cidpo">
+      <ObjectId>16434</ObjectId>
+      <StateNumber>639</StateNumber>
+      <ColNames>id_po</ColNames>
+      <UnderlyingIndexName>cidpo</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="72" parent="35" name="PublishingOffice_name_name1_key">
+      <ObjectId>16436</ObjectId>
+      <StateNumber>639</StateNumber>
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>PublishingOffice_name_name1_key</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
