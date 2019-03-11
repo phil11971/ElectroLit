@@ -1,0 +1,60 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Xoma163
+  Date: 02.04.2018
+  Time: 15:55
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        <c:out value="${title}"></c:out>
+    </title>
+</head>
+<body>
+<section class="container">
+    <div class="login">
+        <h1>Добавление записи</h1>
+        <table>
+            <td>
+            <td><b>Фамилия: </b></td>
+            <td><input required type="text" id="lname"></td></tr>
+            <td>
+            <td><b>Имя: </b></td>
+            <td><input required type="text" id="fname"></td></tr>
+            <td>
+            <td><b>Отчество: </b></td>
+            <td><input required type="text" id="patr"></td></tr>
+            <td>
+            <td><b>Мыло: </b></td>
+            <td><input required type="text" id="mail"></td></tr>
+            <td>
+            <td><b>Дата рождения: </b></td>
+            <td><input required type="text" id="dob"></td></tr>
+        </table>
+        <td><input class="submit1" type="button" value="Назад" onclick= "window.location='/author'"></td>
+        <td><input class="submit2" type="button" value="Создать" onclick="addAuthor()"></td>
+    </div>
+</section>
+
+<script>
+    function addAuthor() {
+        var lname = document.getElementById("lname");
+        var fname = document.getElementById("fname");
+        var patr = document.getElementById("patr");
+        var mail = document.getElementById("mail");
+        var dob = document.getElementById("dob");
+
+        var xhr = new XMLHttpRequest();
+        var body = 'lname=' + encodeURIComponent(lname.value) + '&fname=' + encodeURIComponent(fname.value)+ '&patr=' + encodeURIComponent(patr.value)+ '&mail=' + encodeURIComponent(mail.value)+ '&dob=' + encodeURIComponent(dob.value);
+        xhr.open('POST', '/addAuthor', false);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        xhr.send(body);
+        window.location = '/author';
+    }
+</script>
+</body>
+</html>

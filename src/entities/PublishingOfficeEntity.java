@@ -12,6 +12,16 @@ public class PublishingOfficeEntity {
         this.id_po = id_po;
     }
 
+    public PublishingOfficeEntity(String name, String legal_adr) {
+        this.name = name;
+        this.legal_adr = legal_adr;
+    }
+
+    public PublishingOfficeEntity(int id_po, String name) {
+        this.id_po = id_po;
+        this.name = name;
+    }
+
     public PublishingOfficeEntity(int id_po, String name, String legal_adr) {
         this.id_po = id_po;
         this.name = name;

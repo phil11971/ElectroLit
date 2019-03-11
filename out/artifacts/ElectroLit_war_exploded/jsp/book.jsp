@@ -77,7 +77,8 @@
         var table = document.getElementById('tables');
         var location = '/updateBook?=';
         location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
-            +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML);
+            +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML)
+            +"="+encodeURI(table.rows[count + 1].cells[5].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[6].innerHTML);
         window.location = location;
 
     }

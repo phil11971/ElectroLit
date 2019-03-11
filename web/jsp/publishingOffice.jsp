@@ -19,7 +19,6 @@
             <li onclick="window.location='/addPublishingOffice'"><a href="#">Добавить запись</a></li>
             <li onclick="updatePO()"><a href="#">Изменить запись</a></li>
             <li onclick="deletePO()"><a href="#">Удалить запись</a></li>
-            <li>Сортировка</li>
         </ul>
         <table id="tables">
             <tr>
@@ -77,7 +76,7 @@
                 var table = document.getElementById('tables');
                 var location = '/updatePublishingOffice?=';
                 location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
-                    +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML);
+                    +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML);
                 window.location = location;
 
             }

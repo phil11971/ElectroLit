@@ -44,9 +44,9 @@ public class BookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameter("action").equals("delete")) {
             long id_b = Long.parseLong(request.getParameter("id_b"));
-            BookEntity publishingOfficeEntity = new BookEntity((int)id_b);
+            BookEntity bookEntity = new BookEntity((int)id_b);
             try {
-                BookDAO.delete(publishingOfficeEntity);
+                BookDAO.delete(bookEntity);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -1,14 +1,12 @@
 package entities;
 
-import java.util.Date;
-
 public class AuthorEntity {
     private int id_a;
     private String lname;
     private String fname;
     private String patr;
     private String mail;
-    private Date dob;
+    private String dob;
 
     public AuthorEntity() {
     }
@@ -17,7 +15,15 @@ public class AuthorEntity {
         this.id_a = id_a;
     }
 
-    public AuthorEntity(int id_a, String lname, String fname, String patr, String mail, Date dob) {
+    public AuthorEntity(String lname, String fname, String patr, String mail, String dob) {
+        this.lname = lname;
+        this.fname = fname;
+        this.patr = patr;
+        this.mail = mail;
+        this.dob = dob;
+    }
+
+    public AuthorEntity(int id_a, String lname, String fname, String patr, String mail, String dob) {
         this.id_a = id_a;
         this.lname = lname;
         this.fname = fname;
@@ -66,11 +72,11 @@ public class AuthorEntity {
         this.mail = mail;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 }

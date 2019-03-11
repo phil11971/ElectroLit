@@ -13,7 +13,6 @@
     <title> <c:out value='${pagename}'></c:out></title>
 </head>
 <body>
-
 <h3 align="center">Автор</h3>
 <ul class="menu-main">
     <li onclick="window.location='/addAuthor'"><a href="#">Добавить запись</a></li>

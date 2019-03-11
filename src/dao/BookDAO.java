@@ -46,17 +46,22 @@ public class BookDAO{
 
     public static void delete(BookEntity book) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"Book\" WHERE \"name\" = ?");
-            statement.setString(1, book.getName());
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"Book\" WHERE \"id_b\" = ?");
+            statement.setInt(1, book.getId_b());
             statement.executeUpdate();
         }
     }
 
-    public static void update(BookEntity oldT1, BookEntity newT2) throws SQLException {
+    public static void update(BookEntity bookEntity) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"Book\" SET \"name\" = ? WHERE \"name\" = ?");
-            statement.setString(1, newT2.getName());
-            statement.setString(2, oldT1.getName());
+            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"Book\" SET \"name\" = ?, \"year_pub\"  = ?, \"cnt\" = ?, \"price\" = ?, \"id_po\" = ? WHERE \"id_b\" = ?");
+            statement.setString(1, bookEntity.getName());
+            statement.setInt(2, bookEntity.getYear_pub());
+            statement.setInt(3, bookEntity.getCnt());
+            statement.setBigDecimal(4, bookEntity.getPrice());
+            statement.setInt(5, bookEntity.getId_po());
+            statement.setInt(6, bookEntity.getId_b());
+
             statement.executeUpdate();
         }
     }

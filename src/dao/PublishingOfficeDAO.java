@@ -30,9 +30,10 @@ public class PublishingOfficeDAO {
     public static void insert(PublishingOfficeEntity publishingOffice) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO public.\"PublishingOffice\"\n" +
-                    "\t\t\t(id_po, name)\n" +
-                    "\tVALUES  (nextval('\"POSeq\"'), ?);");
+                    "\t\t\t(id_po, name, legal_adr)\n" +
+                    "\tVALUES  (nextval('\"POSeq\"'), ?, ?);");
             statement.setString(1, publishingOffice.getName());
+            statement.setString(2, publishingOffice.getLegal_adr());
             statement.executeUpdate();
         }
     }
@@ -45,11 +46,12 @@ public class PublishingOfficeDAO {
         }
     }
 
-    public static void update(PublishingOfficeEntity oldT1, PublishingOfficeEntity newT2) throws SQLException {
+    public static void update(PublishingOfficeEntity poe) throws SQLException {
         try (Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"PublishingOffice\" SET \"name\" = ? WHERE \"name\" = ?");
-            statement.setString(1, newT2.getName());
-            statement.setString(2, oldT1.getName());
+            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"PublishingOffice\" SET \"name\" = ?, \"legal_adr\" = ?  WHERE \"id_po\" = ?");
+            statement.setString(1, poe.getName());
+            statement.setString(2, poe.getLegal_adr());
+            statement.setInt(3, poe.getId_po());
             statement.executeUpdate();
         }
     }

@@ -2,10 +2,8 @@ package dao;
 
 import entities.AuthorEntity;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class AuthorDAO {
                                 set.getString("fname"),
                                 set.getString("patr"),
                                 set.getString("mail"),
-                                set.getDate("dob")
+                                set.getString("dob")
                         )
                 );
             return list;
@@ -33,27 +31,36 @@ public class AuthorDAO {
     public static void insert(AuthorEntity author) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO public.\"Author\"(\n" +
-                    "\tid_a, lname, fname)\n" +
-                    "\tVALUES (nextval('\"AuthorSeq\"'), ?, ?);");
+                    "\tid_a, lname, fname, patr, mail, dob)\n" +
+                    "\tVALUES (nextval('\"AuthorSeq\"'), ?, ?, ?, ?, to_date(?, 'yyyy-MM-dd'));");
             statement.setString(1, author.getLname());
             statement.setString(2, author.getFname());
+            statement.setString(3, author.getPatr());
+            statement.setString(4, author.getMail());
+            statement.setString(5, author.getDob().toString());
+
             statement.executeUpdate();
         }
     }
 
     public static void delete(AuthorEntity author) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"Author\" WHERE \"lname\" = ?");
-            statement.setString(1, author.getLname());
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"Author\" WHERE \"id_a\" = ?");
+            statement.setInt(1, author.getId_a());
             statement.executeUpdate();
         }
     }
 
-    public static void update(AuthorEntity oldT1, AuthorEntity newT2) throws SQLException {
+    public static void update(AuthorEntity authorEntity) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"Author\" SET \"lname\" = ? WHERE \"lname\" = ?");
-            statement.setString(1, newT2.getLname());
-            statement.setString(2, oldT1.getLname());
+            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"Author\" SET \"lname\" = ?, \"fname\" = ?, \"patr\" = ?, \"mail\" = ?, \"dob\" = to_date(?, 'yyyy-MM-dd') WHERE \"id_a\" = ?");
+            statement.setString(1, authorEntity.getLname());
+            statement.setString(2, authorEntity.getFname());
+            statement.setString(3, authorEntity.getPatr());
+            statement.setString(4, authorEntity.getMail());
+            statement.setString(5, authorEntity.getDob());
+            statement.setInt(6, authorEntity.getId_a());
+
             statement.executeUpdate();
         }
     }
