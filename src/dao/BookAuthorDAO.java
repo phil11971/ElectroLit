@@ -19,7 +19,8 @@ public class BookAuthorDAO {
             while (set.next())
                 list.add(new BookAuthorEntity(
                                 set.getInt("id_b"),
-                                set.getInt("id_a")
+                                set.getInt("id_a"),
+                                set.getString("desc")
                         )
                 );
             return list;
@@ -29,10 +30,12 @@ public class BookAuthorDAO {
     public static void insert(BookAuthorEntity bookAuthor) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO public.\"BookAuthor\"(\n" +
-                    "\tid_b, id_a)\n" +
-                    "\tVALUES (?, ?);");
+                    "\tid_b, id_a, \"desc\" )\n" +
+                    "\tVALUES (?, ?, ?);");
             statement.setInt(1, bookAuthor.getId_b());
             statement.setInt(2, bookAuthor.getId_a());
+            statement.setString(3, bookAuthor.getDesc());
+
             statement.executeUpdate();
 
         }
@@ -40,17 +43,21 @@ public class BookAuthorDAO {
 
     public static void delete(BookAuthorEntity bookAuthor) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"BookAuthor\" WHERE \"id_b\" = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"BookAuthor\" WHERE \"id_b\" = ? and \"id_a\" = ?");
             statement.setInt(1, bookAuthor.getId_b());
+            statement.setInt(2, bookAuthor.getId_a());
+
             statement.executeUpdate();
         }
     }
 
-    public static void update(BookAuthorEntity oldT1, BookAuthorEntity newT2) throws SQLException {
+    public static void update(BookAuthorEntity bookAuthorEntity) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"BookAuthor\" SET \"id_b\" = ? WHERE \"id_b\" = ?");
-            statement.setInt(1, newT2.getId_b());
-            statement.setInt(2, oldT1.getId_b());
+            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"BookAuthor\" SET \"desc\" = ? WHERE \"id_b\" = ? and \"id_a\" = ?");
+            statement.setString(1, bookAuthorEntity.getDesc());
+            statement.setInt(2, bookAuthorEntity.getId_b());
+            statement.setInt(3, bookAuthorEntity.getId_a());
+
             statement.executeUpdate();
         }
     }

@@ -40,17 +40,19 @@ public class ChapterDAO {
 
     public static void delete(ChapterEntity book) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"Chapter\" WHERE \"name\" = ?");
-            statement.setString(1, book.getName());
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM public.\"Chapter\" WHERE \"id_c\" = ?");
+            statement.setInt(1, book.getId_c());
             statement.executeUpdate();
         }
     }
 
-    public static void update(ChapterEntity oldT1, ChapterEntity newT2) throws SQLException {
+    public static void update(ChapterEntity chapterEntity) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"Chapter\" SET \"name\" = ? WHERE \"name\" = ?");
-            statement.setString(1, newT2.getName());
-            statement.setString(2, oldT1.getName());
+            PreparedStatement statement = connection.prepareStatement("UPDATE public.\"Chapter\" SET \"name\" = ?, \"id_b\" = ? WHERE \"id_c\" = ?");
+            statement.setString(1, chapterEntity.getName());
+            statement.setInt(2, chapterEntity.getId_b());
+            statement.setInt(3, chapterEntity.getId_c());
+
             statement.executeUpdate();
         }
     }

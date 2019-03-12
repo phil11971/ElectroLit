@@ -12,6 +12,11 @@ public class ChapterEntity {
         this.id_c = id_c;
     }
 
+    public ChapterEntity(String name, int id_b) {
+        this.name = name;
+        this.id_b = id_b;
+    }
+
     public ChapterEntity(int id_c, String name, int id_b) {
         this.id_c = id_c;
         this.name = name;

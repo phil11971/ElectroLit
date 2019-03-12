@@ -62,7 +62,7 @@
             //   alert(table.rows[count + 1].cells[i].innerHTML);
             var xhr = new XMLHttpRequest();
             var table = document.getElementById('tables');
-            var body = 'action=' + 'delete' + '&id_c=' + encodeURIComponent(table.rows[count + 1].cells[1].innerHTML);
+            var body = 'action=' + 'delete' + '&id_b=' + encodeURIComponent(table.rows[count + 1].cells[1].innerHTML);
             xhr.open("POST", "/chapter", false);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
             xhr.send(body);
@@ -77,7 +77,7 @@
         var table = document.getElementById('tables');
         var location = '/updateChapter?=';
         location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
-            +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML);
+            +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML);
         window.location = location;
 
     }

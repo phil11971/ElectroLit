@@ -8,7 +8,7 @@
       <ObjectId>16429</ObjectId>
       <StateNumber>638</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>722</IntrospectionStateNumber>
+      <IntrospectionStateNumber>849</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
@@ -106,7 +106,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>723</IntrospectionStateNumber>
+      <IntrospectionStateNumber>850</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -206,12 +206,12 @@
     <table id="32" parent="19" name="Book">
       <ObjectId>16439</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>689</StateNumber>
+      <StateNumber>726</StateNumber>
     </table>
     <table id="33" parent="19" name="BookAuthor">
       <ObjectId>16501</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>689</StateNumber>
+      <StateNumber>848</StateNumber>
     </table>
     <table id="34" parent="19" name="Chapter">
       <ObjectId>16569</ObjectId>
@@ -298,10 +298,10 @@
     </column>
     <column id="47" parent="32" name="price">
       <Position>5</Position>
-      <DataType>money|0s</DataType>
+      <DataType>numeric(4,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>642</StateNumber>
-      <TypeId>790</TypeId>
+      <StateNumber>726</StateNumber>
+      <TypeId>1700</TypeId>
     </column>
     <column id="48" parent="32" name="id_po">
       <Position>6</Position>
@@ -319,7 +319,7 @@
     </column>
     <index id="50" parent="32" name="cidb">
       <ObjectId>16443</ObjectId>
-      <StateNumber>689</StateNumber>
+      <StateNumber>726</StateNumber>
       <ColNames>id_b</ColNames>
       <Unique>1</Unique>
     </index>
@@ -362,14 +362,20 @@
       <StateNumber>657</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="56" parent="33" name="BookAuthor_pkey">
+    <column id="56" parent="33" name="desc">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>848</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="57" parent="33" name="BookAuthor_pkey">
       <ObjectId>16504</ObjectId>
       <StateNumber>689</StateNumber>
       <ColNames>id_b
 id_a</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="57" parent="33" name="BookAuthor_pkey">
+    <key id="58" parent="33" name="BookAuthor_pkey">
       <ObjectId>16505</ObjectId>
       <StateNumber>657</StateNumber>
       <ColNames>id_b
@@ -377,7 +383,7 @@ id_a</ColNames>
       <UnderlyingIndexName>BookAuthor_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="58" parent="33" name="BookAuthor_id_b_fkey">
+    <foreign-key id="59" parent="33" name="BookAuthor_id_b_fkey">
       <ObjectId>16534</ObjectId>
       <StateNumber>678</StateNumber>
       <ColNames>id_b</ColNames>
@@ -389,7 +395,7 @@ id_a</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="59" parent="33" name="BookAuthor_id_a_fkey">
+    <foreign-key id="60" parent="33" name="BookAuthor_id_a_fkey">
       <ObjectId>16539</ObjectId>
       <StateNumber>678</StateNumber>
       <ColNames>id_a</ColNames>
@@ -401,41 +407,41 @@ id_a</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="60" parent="34" name="id_c">
+    <column id="61" parent="34" name="id_c">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>717</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="61" parent="34" name="name">
+    <column id="62" parent="34" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>717</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="62" parent="34" name="id_b">
+    <column id="63" parent="34" name="id_b">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>717</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="63" parent="34" name="Chapter_pkey">
+    <index id="64" parent="34" name="Chapter_pkey">
       <ObjectId>16572</ObjectId>
       <StateNumber>717</StateNumber>
       <ColNames>id_c</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="64" parent="34" name="Chapter_pkey">
+    <key id="65" parent="34" name="Chapter_pkey">
       <ObjectId>16573</ObjectId>
       <StateNumber>717</StateNumber>
       <ColNames>id_c</ColNames>
       <UnderlyingIndexName>Chapter_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="65" parent="34" name="Chapter_id_b_fkey">
+    <foreign-key id="66" parent="34" name="Chapter_id_b_fkey">
       <ObjectId>16574</ObjectId>
       <StateNumber>717</StateNumber>
       <ColNames>id_b</ColNames>
@@ -447,47 +453,47 @@ id_a</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="66" parent="35" name="id_po">
+    <column id="67" parent="35" name="id_po">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>639</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="67" parent="35" name="name">
+    <column id="68" parent="35" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>639</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="68" parent="35" name="legal_adr">
+    <column id="69" parent="35" name="legal_adr">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <StateNumber>639</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="69" parent="35" name="cidpo">
+    <index id="70" parent="35" name="cidpo">
       <ObjectId>16433</ObjectId>
       <StateNumber>639</StateNumber>
       <ColNames>id_po</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="70" parent="35" name="PublishingOffice_name_name1_key">
+    <index id="71" parent="35" name="PublishingOffice_name_name1_key">
       <ObjectId>16435</ObjectId>
       <StateNumber>639</StateNumber>
       <ColNames>name
 name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="71" parent="35" name="cidpo">
+    <key id="72" parent="35" name="cidpo">
       <ObjectId>16434</ObjectId>
       <StateNumber>639</StateNumber>
       <ColNames>id_po</ColNames>
       <UnderlyingIndexName>cidpo</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="72" parent="35" name="PublishingOffice_name_name1_key">
+    <key id="73" parent="35" name="PublishingOffice_name_name1_key">
       <ObjectId>16436</ObjectId>
       <StateNumber>639</StateNumber>
       <ColNames>name</ColNames>

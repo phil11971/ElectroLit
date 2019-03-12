@@ -33,7 +33,6 @@ public class UpdateBookServlet extends HttpServlet {
         request.setAttribute("title","Измнение записи");
         request.setAttribute("idPOList",idPOList);
         request.getRequestDispatcher("jsp/updateBook.jsp").forward(request,response);
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

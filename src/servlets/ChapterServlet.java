@@ -33,7 +33,7 @@ public class ChapterServlet extends HttpServlet {
             arrayLists.add(s);
         }
         request.setAttribute("pagename","Chapter");
-        request.setAttribute("columnList",new String[]{"id главы","название","id автора"});
+        request.setAttribute("columnList",new String[]{"id главы","название","id книги"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/chapter.jsp").forward(request,response);
     }
@@ -41,10 +41,10 @@ public class ChapterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameter("action").equals("delete")) {
-            long id_c = Long.parseLong(request.getParameter("id_c"));
-            ChapterEntity publishingOfficeEntity = new ChapterEntity((int)id_c);
+            long id_b = Long.parseLong(request.getParameter("id_b"));
+            ChapterEntity chapterEntity = new ChapterEntity((int)id_b);
             try {
-                ChapterDAO.delete(publishingOfficeEntity);
+                ChapterDAO.delete(chapterEntity);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

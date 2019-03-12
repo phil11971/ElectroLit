@@ -39,10 +39,11 @@ public class BookAuthorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameter("action").equals("delete")) {
-            long id_b = Long.parseLong(request.getParameter("id_b"));
-            BookAuthorEntity publishingOfficeEntity = new BookAuthorEntity((int)id_b);
+            int id_b = Integer.parseInt(request.getParameter("id_b"));
+            int id_a = Integer.parseInt(request.getParameter("id_a"));
+            BookAuthorEntity bookAuthorEntity = new BookAuthorEntity(id_b, id_a);
             try {
-                BookAuthorDAO.delete(publishingOfficeEntity);
+                BookAuthorDAO.delete(bookAuthorEntity);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
