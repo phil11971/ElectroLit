@@ -13,35 +13,51 @@
     <title>
         <c:out value="${title}"></c:out>
     </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<section class="container">
-    <div class="login">
-        <h1>Добавление записи</h1>
-        <table>
-            <td>
-            <td><b>Название: </b></td>
-            <td><input required type="text" id="namePO"></td></tr>
-            <td>
-            <td><b>Адрес: </b></td>
-            <td><input required type="text" id="adr"></td></tr>
-        </table>
-        <td><input class="submit1" type="button" value="Назад" onclick= "window.location='/publishingOffice'"></td>
-        <td><input class="submit2" type="button" value="Создать" onclick="addPO()"></td>
-    </div>
-</section>
 
-<script>
-    function addPO() {
-        var namePlace = document.getElementById("namePO");
-        var adr = document.getElementById("adr");
-        var xhr = new XMLHttpRequest();
-        var body = 'namePO=' + encodeURIComponent(namePlace.value) + '&adr=' + encodeURIComponent(adr.value);
-        xhr.open('POST', '/addPublishingOffice', false);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-        xhr.send(body);
-        window.location = '/publishingOffice';
-    }
-</script>
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-6">
+
+                <h3 class="display-4">Добавление записи</h3>
+
+                <table class="table">
+                    <td>
+                    <td><b>Название: </b></td>
+                    <td><input required type="text" id="namePO"></td></tr>
+                    <td>
+                    <td><b>Адрес: </b></td>
+                    <td><input required type="text" id="adr"></td></tr>
+                </table>
+
+                <div align="center" class="mt-3">
+                    <button type="button" class="btn btn-dark" onclick="window.location = '/publishingOffice'">Назад</button>
+                    <button type="button" class="btn btn-dark" onclick="addPO()">Создать</button>
+                </div>
+
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        function addPO() {
+            var namePlace = document.getElementById("namePO");
+            var adr = document.getElementById("adr");
+            var xhr = new XMLHttpRequest();
+            var body = 'namePO=' + encodeURIComponent(namePlace.value) + '&adr=' + encodeURIComponent(adr.value);
+            xhr.open('POST', '/addPublishingOffice', false);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+            xhr.send(body);
+            window.location = '/publishingOffice';
+        }
+    </script>
 </body>
 </html>

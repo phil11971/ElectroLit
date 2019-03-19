@@ -16,24 +16,23 @@ import java.util.List;
 @WebServlet("/publishingOffice")
 public class PublishingOfficeServlet extends HttpServlet {
 
-    List<PublishingOfficeEntity> publishingOfficeEntityList;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
-            publishingOfficeEntityList = PublishingOfficeDAO.select();
+            List<PublishingOfficeEntity> publishingOfficeEntityList = PublishingOfficeDAO.select();
+            for(PublishingOfficeEntity te : publishingOfficeEntityList) {
+                ArrayList<String> s = new ArrayList<>();
+                s.add(te.getId_po()+"");
+                s.add(te.getName()+"");
+                s.add(te.getLegal_adr()+"");
+                arrayLists.add(s);
+            }
         }
         catch (SQLException e) {}
-        for(PublishingOfficeEntity te : publishingOfficeEntityList) {
-            ArrayList<String> s = new ArrayList<>();
-            s.add(te.getId_po()+"");
-            s.add(te.getName()+"");
-            s.add(te.getLegal_adr()+"");
-            arrayLists.add(s);
-        }
+
         request.setAttribute("pagename","PublishingOffice");
-        request.setAttribute("columnList",new String[]{"id издательства","название","юридический адрес"});
+        request.setAttribute("columnList",new String[]{"#","id издательства","название","юридический адрес"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/publishingOffice.jsp").forward(request,response);
     }

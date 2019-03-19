@@ -15,28 +15,28 @@ import java.util.List;
 
 @WebServlet("/author")
 public class AuthorServlet extends HttpServlet {
-    List<AuthorEntity> chapterEntityList;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
-            chapterEntityList = AuthorDAO.select();
+            List<AuthorEntity> chapterEntityList = AuthorDAO.select();
+            for(AuthorEntity te : chapterEntityList) {
+                ArrayList<String> s = new ArrayList<>();
+                s.add(te.getId_a()+"");
+                s.add(te.getLname()+"");
+                s.add(te.getFname()+"");
+                s.add(te.getPatr()+"");
+                s.add(te.getMail()+"");
+                s.add(te.getDob()+"");
+
+                arrayLists.add(s);
+            }
         }
         catch (SQLException e) {}
-        for(AuthorEntity te : chapterEntityList) {
-            ArrayList<String> s = new ArrayList<>();
-            s.add(te.getId_a()+"");
-            s.add(te.getLname()+"");
-            s.add(te.getFname()+"");
-            s.add(te.getPatr()+"");
-            s.add(te.getMail()+"");
-            s.add(te.getDob()+"");
 
-            arrayLists.add(s);
-        }
         request.setAttribute("pagename","Author");
-        request.setAttribute("columnList",new String[]{"id автора", "Фамилия", "Имя", "Отчество", "Мыло", "Дата рождения"});
+        request.setAttribute("columnList",new String[]{"#","id автора", "Фамилия", "Имя", "Отчество", "Мыло", "Дата рождения"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/author.jsp").forward(request,response);
     }

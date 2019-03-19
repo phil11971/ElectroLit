@@ -1,6 +1,7 @@
 package servlets;
 
 import dao.BookDAO;
+import dao.PublishingOfficeDAO;
 import entities.BookEntity;
 
 import javax.servlet.ServletException;
@@ -15,27 +16,30 @@ import java.util.List;
 
 @WebServlet("/book")
 public class BookServlet extends HttpServlet {
-    List<BookEntity> chapterEntityList;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
-            chapterEntityList = BookDAO.select();
+            List<BookEntity> bookEntityList = BookDAO.select();
+            for(BookEntity book : bookEntityList) {
+                ArrayList<String> s = new ArrayList<>();
+                s.add(book.getId_b()+"");
+                s.add(book.getName()+"");
+                s.add(book.getYear_pub()+"");
+                s.add(book.getCnt()+"");
+                s.add(book.getPrice()+"");
+                s.add(book.getId_po()+"");
+                //todo
+                //String namePO = PublishingOfficeDAO.select(book.getId_po());
+                //s.add(namePO);
+                arrayLists.add(s);
+            }
         }
         catch (SQLException e) {}
-        for(BookEntity te : chapterEntityList) {
-            ArrayList<String> s = new ArrayList<>();
-            s.add(te.getId_b()+"");
-            s.add(te.getName()+"");
-            s.add(te.getYear_pub()+"");
-            s.add(te.getCnt()+"");
-            s.add(te.getPrice()+"");
-            s.add(te.getId_po()+"");
-            arrayLists.add(s);
-        }
+
         request.setAttribute("pagename","Book");
-        request.setAttribute("columnList",new String[]{"id книги","название","год","количество","цена", "id издательства"});
+        request.setAttribute("columnList",new String[]{"#","id книги","название","год","количество","цена", "id издательства"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/book.jsp").forward(request,response);
     }

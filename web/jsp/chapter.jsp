@@ -11,76 +11,97 @@
 <head>
     <meta charset="utf-8">
     <title> <c:out value='${pagename}'></c:out></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
-<h3 align="center">Глава</h3>
-<ul class="menu-main">
-    <li onclick="window.location='/addChapter'"><a href="#">Добавить запись</a></li>
-    <li onclick="updateChapter()"><a href="#">Изменить запись</a></li>
-    <li onclick="deleteChapter()"><a href="#">Удалить запись</a></li>
-    <li>Сортировка</li>
-</ul>
-<table id="tables">
-    <tr>
-        <th>#</th>
-        <c:forEach var="nameColumn" items="${columnList}">
-            <th onclick="th(this)()">${nameColumn}</th>
-        </c:forEach>
-    </tr>
-    <c:forEach var="list" items="${tableList}">
-        <tr onclick="selectTR(this)">
-            <td><input type="radio" name="q"></td>
-            <c:forEach var="item" items="${list}">
-                <td>${item}</td>
-            </c:forEach>
-        </tr>
-    </c:forEach>
-</table>
-<div align=center>
-    <td><input class="submit" type="button" value="Назад" onclick= "window.location=''" ;></td>
-</div>
-<script>
-    function getnumb() {
-        var count;
-        var z = document.getElementsByName("q");
-        var table = document.getElementById('tables');
-        for (var i = 0; i < z.length; i++) {
-            if (z[i].checked) {
-                count = i;
-                break;
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-6">
+
+                <h3 class="display-4">Глава</h3>
+
+                <table id="tables" class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <c:forEach var="nameColumn" items="${columnList}">
+                            <th scope="col">${nameColumn}</th>
+                        </c:forEach>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="list" items="${tableList}">
+                        <tr>
+                            <td><input type="radio" name="r"></td>
+                            <c:forEach var="item" items="${list}">
+                                <td>${item}</td>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+                <ul class="list-group list-group-horizontal">
+                    <li onclick="window.location='/addChapter'" class="list-group-item"><a href="#">Добавить запись</a></li>
+                    <li onclick="updateChapter()" class="list-group-item"><a href="#">Изменить запись</a></li>
+                    <li onclick="deleteChapter()" class="list-group-item"><a href="#">Удалить запись</a></li>
+                </ul>
+
+                <div align="center" class="mt-3">
+                    <button type="button" class="btn btn-dark" onclick="window.location='/'">Назад</button>
+                </div>
+
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        function getnumb() {
+            var count;
+            var z = document.getElementsByName("r");
+            var table = document.getElementById('tables');
+            for (var i = 0; i < z.length; i++) {
+                if (z[i].checked) {
+                    count = i;
+                    break;
+                }
+            }
+            return count;
+        }
+        function deleteChapter() {
+            var count = getnumb();
+            if (count == undefined) {
+                alert("Выберите нужную строку!")
+            }
+            else {
+                //   alert(table.rows[count + 1].cells[i].innerHTML);
+                var xhr = new XMLHttpRequest();
+                var table = document.getElementById('tables');
+                var body = 'action=' + 'delete' + '&id_b=' + encodeURIComponent(table.rows[count + 1].cells[1].innerHTML);
+                xhr.open("POST", "/chapter", false);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                xhr.send(body);
+                window.location = '/chapter';
             }
         }
-        return count;
-    }
-    function deleteChapter() {
-        var count = getnumb();
-        if (count == undefined) {
-            alert("Выберите нужную строку!")
-        }
-        else {
-            //   alert(table.rows[count + 1].cells[i].innerHTML);
-            var xhr = new XMLHttpRequest();
+        function updateChapter() {
+            var count = getnumb();
+            if (count == undefined) {
+                alert("Выберите нужную строку!")
+            }
             var table = document.getElementById('tables');
-            var body = 'action=' + 'delete' + '&id_b=' + encodeURIComponent(table.rows[count + 1].cells[1].innerHTML);
-            xhr.open("POST", "/chapter", false);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-            xhr.send(body);
-            window.location = '/chapter';
-        }
-    }
-    function updateChapter() {
-        var count = getnumb();
-        if (count == undefined) {
-            alert("Выберите нужную строку!")
-        }
-        var table = document.getElementById('tables');
-        var location = '/updateChapter?=';
-        location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
-            +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML);
-        window.location = location;
+            var location = '/updateChapter?=';
+            location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
+                +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML);
+            window.location = location;
 
-    }
-</script>
+        }
+    </script>
 </body>
 </html>

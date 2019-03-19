@@ -16,24 +16,23 @@ import java.util.List;
 @WebServlet("/chapter")
 public class ChapterServlet extends HttpServlet {
 
-    List<ChapterEntity> chapterEntityList;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
-            chapterEntityList = ChapterDAO.select();
+            List<ChapterEntity> chapterEntityList = ChapterDAO.select();
+            for(ChapterEntity te : chapterEntityList) {
+                ArrayList<String> s = new ArrayList<>();
+                s.add(te.getId_c()+"");
+                s.add(te.getName()+"");
+                s.add(te.getId_b()+"");
+                arrayLists.add(s);
+            }
         }
         catch (SQLException e) {}
-        for(ChapterEntity te : chapterEntityList) {
-            ArrayList<String> s = new ArrayList<>();
-            s.add(te.getId_c()+"");
-            s.add(te.getName()+"");
-            s.add(te.getId_b()+"");
-            arrayLists.add(s);
-        }
+
         request.setAttribute("pagename","Chapter");
-        request.setAttribute("columnList",new String[]{"id главы","название","id книги"});
+        request.setAttribute("columnList",new String[]{"#","id главы","название","id книги"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/chapter.jsp").forward(request,response);
     }

@@ -30,6 +30,8 @@ public class BookDAO{
         }
     }
 
+
+
     public static void insert(BookEntity book) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO public.\"Book\"\n" +

@@ -1,5 +1,6 @@
 package dao;
 
+import entities.BookEntity;
 import entities.ChapterEntity;
 
 import java.sql.Connection;
@@ -24,6 +25,27 @@ public class ChapterDAO {
                         )
                 );
             return list;
+        }
+    }
+
+    public static List<ChapterEntity> selectOnBook(int id_b) throws SQLException {
+        try(Connection connection = ConnectionDB.getConnection()) {
+
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM public.\"Chapter\" where \"id_b\" = ?");
+            statement.setInt(1, id_b);
+
+            ResultSet set = statement.executeQuery();
+            List list = new LinkedList<ChapterEntity>();
+
+            while (set.next())
+                list.add(new ChapterEntity(
+                                set.getInt("id_c"),
+                                set.getString("name"),
+                                set.getInt("id_b")
+                        )
+                );
+            return list;
+
         }
     }
 

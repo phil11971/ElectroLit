@@ -15,23 +15,23 @@ import java.util.List;
 
 @WebServlet("/bookAuthor")
 public class BookAuthorServlet extends HttpServlet {
-    List<BookAuthorEntity> chapterEntityList;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
-            chapterEntityList = BookAuthorDAO.select();
+            List<BookAuthorEntity> chapterEntityList = BookAuthorDAO.select();
+            for(BookAuthorEntity te : chapterEntityList) {
+                ArrayList<String> s = new ArrayList<>();
+                s.add(te.getId_b()+"");
+                s.add(te.getId_a()+"");
+                arrayLists.add(s);
+            }
         }
         catch (SQLException e) {}
-        for(BookAuthorEntity te : chapterEntityList) {
-            ArrayList<String> s = new ArrayList<>();
-            s.add(te.getId_b()+"");
-            s.add(te.getId_a()+"");
-            arrayLists.add(s);
-        }
+
         request.setAttribute("pagename","BookAuthor");
-        request.setAttribute("columnList",new String[]{"id книги","id автора"});
+        request.setAttribute("columnList",new String[]{"#","id книги","id автора"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/bookAuthor.jsp").forward(request,response);
     }

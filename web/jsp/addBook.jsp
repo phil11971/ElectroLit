@@ -13,54 +13,71 @@
     <title>
         <c:out value="${title}"></c:out>
     </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<section class="container">
-    <div class="login">
-        <h1>Добавление записи</h1>
-        <table>
-            <td>
-            <td><b>Название:</b></td>
-            <td><input required  type="text" id="title" name="title"></td></tr>
-            <td>
-            <td><b>Год издания:</b></td>
-            <td><input required type="number" id="year"></td></tr>
-            <td><b>Количество книг:</b></td>
-            <td><input required type="number" id="pages"></td></tr>
-            <td>
-            <td><b>Цена, р:</b></td>
-            <td><input required type="number" id="price"></td></tr>
-            <td>
-            <td><b>ID издательства:</b></td>
-            <td>
-                <select id = "poId" >
-                    <c:forEach var="i" items="${idPOList}">
-                        <option value =  ${i}>
-                                ${i}
-                        </option>
-                    </c:forEach>
-                </select></td></tr>
-        </table>
-        <td><input type="button" value="Назад" onclick= "window.location='/book'";></td>
-        <td><input type="button" value="Создать" onclick="addBook()"></td>
+
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-6">
+
+                <h3 class="display-4">Добавление записи</h3>
+
+                <table class="table">
+                    <td>
+                    <td><b>Название:</b></td>
+                    <td><input required  type="text" id="title" name="title"></td></tr>
+                    <td>
+                    <td><b>Год издания:</b></td>
+                    <td><input required type="number" id="year"></td></tr>
+                    <td>
+                    <td><b>Количество книг:</b></td>
+                    <td><input required type="number" id="pages"></td></tr>
+                    <td>
+                    <td><b>Цена, р:</b></td>
+                    <td><input required type="number" id="price"></td></tr>
+                    <td>
+                    <td><b>ID издательства:</b></td>
+                    <td>
+                        <select id = "poId" >
+                            <c:forEach var="i" items="${idPOList}">
+                                <option value =  ${i}>
+                                        ${i}
+                                </option>
+                            </c:forEach>
+                        </select></td></tr>
+                </table>
+
+                <div align="center" class="mt-3">
+                    <button type="button" class="btn btn-dark" onclick="window.location = '/book'">Назад</button>
+                    <button type="button" class="btn btn-dark" onclick="addBook()">Создать</button>
+                </div>
+
+            </div>
+
+            <div class="col"></div>
+        </div>
     </div>
-</section>
 
-<script>
-    function addBook() {
-        var title = document.getElementById("title");
-        var year = document.getElementById("year");
-        var pages = document.getElementById("pages");
-        var price = document.getElementById("price");
-        var poId = document.getElementById("poId");
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        function addBook() {
+            var title = document.getElementById("title");
+            var year = document.getElementById("year");
+            var pages = document.getElementById("pages");
+            var price = document.getElementById("price");
+            var poId = document.getElementById("poId");
 
-        var xhr = new XMLHttpRequest();
-        var body = 'title=' + encodeURIComponent(title.value) + '&year=' + encodeURIComponent(year.value)+ '&pages=' + encodeURIComponent(pages.value)+ '&price=' + encodeURIComponent(price.value)+ '&poId=' + encodeURIComponent(poId.value);
-        xhr.open('POST', '/addBook', false);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-        xhr.send(body);
-        window.location = '/book';
-    }
-</script>
+            var xhr = new XMLHttpRequest();
+            var body = 'title=' + encodeURIComponent(title.value) + '&year=' + encodeURIComponent(year.value)+ '&pages=' + encodeURIComponent(pages.value)+ '&price=' + encodeURIComponent(price.value)+ '&poId=' + encodeURIComponent(poId.value);
+            xhr.open('POST', '/addBook', false);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+            xhr.send(body);
+            window.location = '/book';
+        }
+    </script>
 </body>
 </html>
