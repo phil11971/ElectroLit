@@ -14,24 +14,26 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/addBook")
 public class AddBookServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> idPOList=new ArrayList<>();
+        Map<Integer,String> dictionary = new HashMap<>();
         try {
             List<PublishingOfficeEntity> poList = PublishingOfficeDAO.select();
             for(PublishingOfficeEntity po : poList){
-                idPOList.add(po.getId_po()+"");
+                dictionary.put(po.getId_po(), po.getName());
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         request.setAttribute("title","Добавить книгу");
-        request.setAttribute("idPOList",idPOList);
+        request.setAttribute("idPOList",dictionary);
         request.getRequestDispatcher("jsp/addBook.jsp").forward(request,response);
     }
 

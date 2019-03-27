@@ -43,8 +43,8 @@
                     <td>
                         <select id = "poId" >
                             <c:forEach var="i" items="${idPOList}">
-                                <option value =  ${i}>
-                                        ${i}
+                                <option value =  ${i.key}>
+                                        ${i.value}
                                 </option>
                             </c:forEach>
                         </select></td></tr>
