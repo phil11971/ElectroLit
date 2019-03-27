@@ -29,17 +29,17 @@ public class BookServlet extends HttpServlet {
                 s.add(book.getYear_pub()+"");
                 s.add(book.getCnt()+"");
                 s.add(book.getPrice()+"");
-                s.add(book.getId_po()+"");
+                //s.add(book.getId_po()+"");
                 //todo
-                //String namePO = PublishingOfficeDAO.select(book.getId_po());
-                //s.add(namePO);
+                String namePO = PublishingOfficeDAO.getNamePOById(book.getId_po());
+                s.add(namePO);
                 arrayLists.add(s);
             }
         }
         catch (SQLException e) {}
 
         request.setAttribute("pagename","Книга");
-        request.setAttribute("columnList",new String[]{"#","id книги","название","год","количество","цена", "id издательства"});
+        request.setAttribute("columnList",new String[]{"#","id книги","название","год","количество","цена", "издательство"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/book.jsp").forward(request,response);
     }

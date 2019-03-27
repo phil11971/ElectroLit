@@ -27,6 +27,18 @@ public class PublishingOfficeDAO {
         }
     }
 
+    public static String getNamePOById(int id) throws SQLException {
+        try(Connection connection = ConnectionDB.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM public.\"PublishingOffice\" where id_po = ?;");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            String namePO = "";
+            while (resultSet.next())
+                namePO = resultSet.getString("name");
+            return namePO;
+        }
+    }
+
     public static void insert(PublishingOfficeEntity publishingOffice) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO public.\"PublishingOffice\"\n" +
