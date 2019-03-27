@@ -34,7 +34,7 @@
                     <tbody>
                     <c:forEach var="list" items="${tableList}">
                         <tr>
-                            <td><input type="radio" name="q"></td>
+                            <td><input type="radio" name="r"></td>
                             <c:forEach var="item" items="${list}">
                                 <td>${item}</td>
                             </c:forEach>
@@ -64,7 +64,7 @@
     <script>
         function getnumb() {
             var count;
-            var z = document.getElementsByName("q");
+            var z = document.getElementsByName("r");
             var table = document.getElementById('tables');
             for (var i = 0; i < z.length; i++) {
                 if (z[i].checked) {

@@ -33,7 +33,7 @@ public class AddChapterServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("title","Add chapter");
+        request.setAttribute("title","Добавить главу");
         request.setAttribute("idBookList",idBookList);
         request.getRequestDispatcher("jsp/addChapter.jsp").forward(request,response);
     }

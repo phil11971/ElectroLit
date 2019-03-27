@@ -38,7 +38,7 @@ public class BookServlet extends HttpServlet {
         }
         catch (SQLException e) {}
 
-        request.setAttribute("pagename","Book");
+        request.setAttribute("pagename","Книга");
         request.setAttribute("columnList",new String[]{"#","id книги","название","год","количество","цена", "id издательства"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/book.jsp").forward(request,response);

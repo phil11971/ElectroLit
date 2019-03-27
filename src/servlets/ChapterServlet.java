@@ -31,7 +31,7 @@ public class ChapterServlet extends HttpServlet {
         }
         catch (SQLException e) {}
 
-        request.setAttribute("pagename","Chapter");
+        request.setAttribute("pagename","Глава");
         request.setAttribute("columnList",new String[]{"#","id главы","название","id книги"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/chapter.jsp").forward(request,response);

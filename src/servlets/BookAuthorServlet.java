@@ -30,7 +30,7 @@ public class BookAuthorServlet extends HttpServlet {
         }
         catch (SQLException e) {}
 
-        request.setAttribute("pagename","BookAuthor");
+        request.setAttribute("pagename","Книга-Автор");
         request.setAttribute("columnList",new String[]{"#","id книги","id автора"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/bookAuthor.jsp").forward(request,response);

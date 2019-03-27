@@ -31,7 +31,7 @@ public class PublishingOfficeServlet extends HttpServlet {
         }
         catch (SQLException e) {}
 
-        request.setAttribute("pagename","PublishingOffice");
+        request.setAttribute("pagename","Издательство");
         request.setAttribute("columnList",new String[]{"#","id издательства","название","юридический адрес"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/publishingOffice.jsp").forward(request,response);

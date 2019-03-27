@@ -36,7 +36,7 @@ public class UpdateBookAuthorServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("title","Add teacherTextbook");
+        request.setAttribute("title","Изменение книги-автора");
         request.setAttribute("bookList", books);
         request.setAttribute("authorList", authors);
         request.getRequestDispatcher("jsp/updateBookAuthor.jsp").forward(request,response);

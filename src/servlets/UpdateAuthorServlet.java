@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class UpdateAuthorServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title","Измнение записи");
+        request.setAttribute("title","Изменение автора");
         request.getRequestDispatcher("jsp/updateAuthor.jsp").forward(request,response);
     }
 

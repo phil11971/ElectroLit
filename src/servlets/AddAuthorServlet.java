@@ -24,7 +24,7 @@ import java.util.Locale;
 public class AddAuthorServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title","Add author");
+        request.setAttribute("title","Добавить автора");
         request.getRequestDispatcher("jsp/addAuthor.jsp").forward(request,response);
     }
 

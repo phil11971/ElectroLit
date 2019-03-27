@@ -17,7 +17,7 @@ import java.util.List;
 public class AddPublishingOfficeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title","Add publishing office");
+        request.setAttribute("title","Добавить издательство");
         request.getRequestDispatcher("jsp/addPublishingOffice.jsp").forward(request,response);
     }
 

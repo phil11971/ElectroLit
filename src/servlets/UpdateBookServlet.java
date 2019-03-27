@@ -30,7 +30,7 @@ public class UpdateBookServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("title","Измнение записи");
+        request.setAttribute("title","Изменение книги");
         request.setAttribute("idPOList",idPOList);
         request.getRequestDispatcher("jsp/updateBook.jsp").forward(request,response);
     }

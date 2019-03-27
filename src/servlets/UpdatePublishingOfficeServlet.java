@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class UpdatePublishingOfficeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title","Измнение записи");
+        request.setAttribute("title","Изменение издательства");
         request.getRequestDispatcher("jsp/updatePublishingOffice.jsp").forward(request,response);
     }
 

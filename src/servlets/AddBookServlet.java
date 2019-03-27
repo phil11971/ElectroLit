@@ -30,7 +30,7 @@ public class AddBookServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("title","Add book");
+        request.setAttribute("title","Добавить книгу");
         request.setAttribute("idPOList",idPOList);
         request.getRequestDispatcher("jsp/addBook.jsp").forward(request,response);
     }

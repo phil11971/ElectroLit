@@ -32,6 +32,7 @@
                     <td>
                     <td><b>Год издания:</b></td>
                     <td><input required type="number" id="year"></td></tr>
+                    <td>
                     <td><b>Количество книг:</b></td>
                     <td><input required type="number" id="pages"></td></tr>
                     <td>
