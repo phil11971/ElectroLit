@@ -28,6 +28,20 @@ public class AuthorDAO {
         }
     }
 
+    public static String getNameAuthorById(int id) throws SQLException {
+        try(Connection connection = ConnectionDB.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM public.\"Author\" where id_a = ?;");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            String nameAuthor = "";
+            while (resultSet.next()){
+                nameAuthor = resultSet.getString("lname") + " ";
+                nameAuthor += resultSet.getString("fname");
+            }
+            return nameAuthor;
+        }
+    }
+
     public static void insert(AuthorEntity author) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO public.\"Author\"(\n" +

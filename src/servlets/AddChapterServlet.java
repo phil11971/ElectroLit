@@ -17,24 +17,26 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/addChapter")
 public class AddChapterServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> idBookList=new ArrayList<>();
+        Map<Integer,String> dictionary = new HashMap<>();
         try {
             List<BookEntity> bookList = BookDAO.select();
             for(BookEntity book : bookList){
-                idBookList.add(book.getId_b()+"");
+                dictionary.put(book.getId_b(), book.getName());
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         request.setAttribute("title","Добавить главу");
-        request.setAttribute("idBookList",idBookList);
+        request.setAttribute("idBookList",dictionary);
         request.getRequestDispatcher("jsp/addChapter.jsp").forward(request,response);
     }
 

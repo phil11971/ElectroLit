@@ -15,22 +15,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/addBookAuthor")
 public class AddBookAuthorServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<String> books = new ArrayList<>();
-        ArrayList<String> authors = new ArrayList<>();
+        Map<Integer,String> books = new HashMap<>();
+        Map<Integer,String> authors = new HashMap<>();
         try {
             List<BookEntity> bookEntities = BookDAO.select();
             List<AuthorEntity> authorEntities = AuthorDAO.select();
             for(BookEntity book : bookEntities){
-                books.add(book.getId_b()+"");
+                books.put(book.getId_b(), book.getName());
             }
             for(AuthorEntity author : authorEntities){
-                authors.add(author.getId_a()+"");
+                authors.put(author.getId_a(), author.getFname() + " " + author.getLname());
             }
         } catch (SQLException e) {
             e.printStackTrace();

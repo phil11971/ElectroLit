@@ -1,6 +1,8 @@
 package servlets;
 
+import dao.AuthorDAO;
 import dao.BookAuthorDAO;
+import dao.BookDAO;
 import entities.BookAuthorEntity;
 
 import javax.servlet.ServletException;
@@ -23,15 +25,17 @@ public class BookAuthorServlet extends HttpServlet {
             List<BookAuthorEntity> chapterEntityList = BookAuthorDAO.select();
             for(BookAuthorEntity te : chapterEntityList) {
                 ArrayList<String> s = new ArrayList<>();
-                s.add(te.getId_b()+"");
-                s.add(te.getId_a()+"");
+                String nameBook = BookDAO.getNameBookById(te.getId_b());
+                s.add(nameBook);
+                String author = AuthorDAO.getNameAuthorById(te.getId_a());
+                s.add(author);
                 arrayLists.add(s);
             }
         }
         catch (SQLException e) {}
 
         request.setAttribute("pagename","Книга-Автор");
-        request.setAttribute("columnList",new String[]{"#","id книги","id автора"});
+        request.setAttribute("columnList",new String[]{"#","книга","автор"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/bookAuthor.jsp").forward(request,response);
     }

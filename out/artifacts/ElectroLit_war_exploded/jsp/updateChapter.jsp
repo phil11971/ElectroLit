@@ -33,12 +33,12 @@
                     <td><b>Название:</b></td>
                     <td><input required  type="text" id="title" name="title"></td></tr>
                     <td>
-                    <td><b>ID книги:</b></td>
+                    <td><b>Книга:</b></td>
                     <td>
                         <select id = "bookId" >
                             <c:forEach var="i" items="${idBookList}">
-                                <option value = ${i}>
-                                        ${i}
+                                <option value = ${i.key}>
+                                        ${i.value}
                                 </option>
                             </c:forEach>
                         </select></td></tr>

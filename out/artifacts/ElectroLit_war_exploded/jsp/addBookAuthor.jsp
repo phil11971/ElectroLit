@@ -27,20 +27,20 @@
 
                 <table class="table">
                     <td>
-                    <td><b>id книги:</b></td>
+                    <td><b>Книга:</b></td>
                     <td><select id = "bookId" >
                         <c:forEach var="i" items="${bookList}">
-                            <option value =  ${i}>
-                                    ${i}
+                            <option value =  ${i.key}>
+                                    ${i.value}
                             </option>
                         </c:forEach>
                     </select></td></tr>
                     <td>
-                    <td><b>id автора:</b></td>
+                    <td><b>Aвтор:</b></td>
                     <td><select id = "authorId" >
                         <c:forEach var="i" items="${authorList}">
-                            <option value =  ${i}>
-                                    ${i}
+                            <option value =  ${i.key}>
+                                    ${i.value}
                             </option>
                         </c:forEach>
                     </select></td></tr>

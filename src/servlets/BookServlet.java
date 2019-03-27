@@ -29,8 +29,6 @@ public class BookServlet extends HttpServlet {
                 s.add(book.getYear_pub()+"");
                 s.add(book.getCnt()+"");
                 s.add(book.getPrice()+"");
-                //s.add(book.getId_po()+"");
-                //todo
                 String namePO = PublishingOfficeDAO.getNamePOById(book.getId_po());
                 s.add(namePO);
                 arrayLists.add(s);

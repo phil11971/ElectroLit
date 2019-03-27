@@ -1,5 +1,6 @@
 package servlets;
 
+import dao.BookDAO;
 import dao.ChapterDAO;
 import entities.ChapterEntity;
 
@@ -25,14 +26,15 @@ public class ChapterServlet extends HttpServlet {
                 ArrayList<String> s = new ArrayList<>();
                 s.add(te.getId_c()+"");
                 s.add(te.getName()+"");
-                s.add(te.getId_b()+"");
+                String nameBook = BookDAO.getNameBookById(te.getId_b());
+                s.add(nameBook+"");
                 arrayLists.add(s);
             }
         }
         catch (SQLException e) {}
 
         request.setAttribute("pagename","Глава");
-        request.setAttribute("columnList",new String[]{"#","id главы","название","id книги"});
+        request.setAttribute("columnList",new String[]{"#","id главы","название","книгa"});
         request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/chapter.jsp").forward(request,response);
     }

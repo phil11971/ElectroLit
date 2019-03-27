@@ -30,7 +30,17 @@ public class BookDAO{
         }
     }
 
-
+    public static String getNameBookById(int id) throws SQLException {
+        try(Connection connection = ConnectionDB.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM public.\"Book\" where id_b = ?;");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            String nameBook = "";
+            while (resultSet.next())
+                nameBook = resultSet.getString("name");
+            return nameBook;
+        }
+    }
 
     public static void insert(BookEntity book) throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
