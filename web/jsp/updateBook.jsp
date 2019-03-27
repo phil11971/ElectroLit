@@ -42,12 +42,12 @@
                     <td><b>Цена, р:</b></td>
                     <td><input required type="number" id="price"></td></tr>
                     <td>
-                    <td><b>ID издательства:</b></td>
+                    <td><b>Издательство:</b></td>
                     <td>
                         <select id = "poId" >
                             <c:forEach var="i" items="${idPOList}">
-                                <option value =  ${i}>
-                                        ${i}
+                                <option value =  ${i.key}>
+                                        ${i.value}
                                 </option>
                             </c:forEach>
                         </select></td></tr>
