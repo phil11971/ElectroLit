@@ -25,7 +25,8 @@ public class PublishingOfficeServlet extends HttpServlet {
                 ArrayList<String> s = new ArrayList<>();
                 s.add(te.getId_po()+"");
                 s.add(te.getName()+"");
-                s.add(te.getLegal_adr()+"");
+                String legalAdr = te.getLegal_adr() != null ? te.getLegal_adr() : "-";
+                s.add(legalAdr);
                 arrayLists.add(s);
             }
         }

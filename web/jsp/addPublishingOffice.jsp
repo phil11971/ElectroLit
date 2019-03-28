@@ -51,6 +51,10 @@
         function addPO() {
             var namePlace = document.getElementById("namePO");
             var adr = document.getElementById("adr");
+            if (namePlace.value === "" || adr.value === "") {
+                alert("Введите недостающие поля");
+                return;
+            }
             var xhr = new XMLHttpRequest();
             var body = 'namePO=' + encodeURIComponent(namePlace.value) + '&adr=' + encodeURIComponent(adr.value);
             xhr.open('POST', '/addPublishingOffice', false);

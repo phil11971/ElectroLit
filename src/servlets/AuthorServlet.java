@@ -26,9 +26,12 @@ public class AuthorServlet extends HttpServlet {
                 s.add(te.getId_a()+"");
                 s.add(te.getLname()+"");
                 s.add(te.getFname()+"");
-                s.add(te.getPatr()+"");
-                s.add(te.getMail()+"");
-                s.add(te.getDob()+"");
+                String patr = te.getPatr() != null ? te.getPatr() : "-";
+                s.add(patr);
+                String mail = te.getMail() != null ? te.getMail() : "-";
+                s.add(mail);
+                String dob = te.getDob() != null ? te.getDob() : "-";
+                s.add(dob);
 
                 arrayLists.add(s);
             }

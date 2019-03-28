@@ -37,10 +37,10 @@
                     <td><input required type="text" id="patr"></td></tr>
                     <td>
                     <td><b>Мыло: </b></td>
-                    <td><input required type="text" id="mail"></td></tr>
+                    <td><input required type="email" id="mail"></td></tr>
                     <td>
                     <td><b>Дата рождения: </b></td>
-                    <td><input required type="text" id="dob"></td></tr>
+                    <td><input required type="date" id="dob"></td></tr>
                 </table>
 
                 <div align="center" class="mt-3">

@@ -31,13 +31,13 @@
                     <td><input required  type="text" id="title" name="title"></td></tr>
                     <td>
                     <td><b>Год издания:</b></td>
-                    <td><input required type="number" id="year"></td></tr>
+                    <td><input required type="number" id="year" min="1000" max="3000" value="2019"></td></tr>
                     <td>
                     <td><b>Количество книг:</b></td>
-                    <td><input required type="number" id="pages"></td></tr>
+                    <td><input required type="number" id="pages" min="0" max="1000" value="1"></td></tr>
                     <td>
                     <td><b>Цена, р:</b></td>
-                    <td><input required type="number" id="price"></td></tr>
+                    <td><input required type="number" id="price" min="1" max="10000" value="1"></td></tr>
                     <td>
                     <td><b>Издательство:</b></td>
                     <td>
