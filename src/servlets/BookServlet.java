@@ -19,7 +19,7 @@ public class BookServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
+        /*ArrayList<ArrayList<String>> arrayLists = new ArrayList<>();
         try {
             List<BookEntity> bookEntityList = BookDAO.select();
             for(BookEntity book : bookEntityList) {
@@ -34,11 +34,11 @@ public class BookServlet extends HttpServlet {
                 arrayLists.add(s);
             }
         }
-        catch (SQLException e) {}
+        catch (SQLException e) {}*/
 
         request.setAttribute("pagename","Книга");
-        request.setAttribute("columnList",new String[]{"#","id книги","название","год","количество","цена", "издательство"});
-        request.setAttribute("tableList",arrayLists);
+        request.setAttribute("columnList",new String[]{"#","id книги","название","год","количество","цена", "издательство", "авторы"});
+        //request.setAttribute("tableList",arrayLists);
         request.getRequestDispatcher("jsp/book.jsp").forward(request,response);
     }
 

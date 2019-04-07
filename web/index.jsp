@@ -27,7 +27,6 @@
             <a href="/publishingOffice" class="list-group-item list-group-item-action">Издательство</a>
             <a href="/author" class="list-group-item list-group-item-action">Автор</a>
             <a href="/book" class="list-group-item list-group-item-action">Книга</a>
-            <a href="/bookAuthor" class="list-group-item list-group-item-action">Книга-Автор</a>
             <a href="/chapter" class="list-group-item list-group-item-action">Глава</a>
           </div>
 

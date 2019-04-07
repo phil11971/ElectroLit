@@ -64,6 +64,11 @@
             var mail = document.getElementById("mail");
             var dob = document.getElementById("dob");
 
+            if (lname.value === "" || fname.value === "") {
+                alert("Введите недостающие поля");
+                return;
+            }
+
             var xhr = new XMLHttpRequest();
             var body = 'lname=' + encodeURIComponent(lname.value) + '&fname=' + encodeURIComponent(fname.value)+ '&patr=' + encodeURIComponent(patr.value)+ '&mail=' + encodeURIComponent(mail.value)+ '&dob=' + encodeURIComponent(dob.value);
             xhr.open('POST', '/addAuthor', false);

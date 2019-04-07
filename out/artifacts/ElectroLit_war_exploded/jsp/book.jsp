@@ -1,3 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="entities.BookEntity" %>
+<%@ page import="dao.BookDAO" %>
+<%@ page import="dao.PublishingOfficeDAO" %>
+<%@ page import="entities.AuthorEntity" %>
 <%--
   Created by IntelliJ IDEA.
   User: Vladik
@@ -15,7 +20,7 @@
 </head>
 <body>
 
-    <div class="container" align="center">
+    <!--<div class="container" align="center">
         <div class="row">
             <div class="col"></div>
 
@@ -45,6 +50,75 @@
 
                 <ul class="list-group list-group-horizontal">
                     <li onclick="window.location='/addBook'" class="list-group-item"><a href="#">Добавить запись</a></li>
+                    <li onclick="updateBook()" class="list-group-item"><a href="#">Изменить запись</a></li>
+                    <li onclick="deleteBook()" class="list-group-item"><a href="#">Удалить запись</a></li>
+                </ul>
+
+                <div align="center" class="mt-3">
+                    <button type="button" class="btn btn-dark" onclick="window.location='/'">Назад</button>
+                </div>
+
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div> -->
+
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-6">
+
+                <h3 class="display-4">Книга</h3>
+
+                <%
+                    List<BookEntity> books = BookDAO.selectAll();%>
+                <table id="tables" class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <c:forEach var="nameColumn" items="${columnList}">
+                            <th scope="col">${nameColumn}</th>
+                        </c:forEach>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        for (BookEntity book : books) {
+                    %>
+                    <form action="EditBook" method="get">
+                        <tr>
+                            <td><input type="radio" name="r"></td>
+                            <td><%=book.getId_b()%></td>
+                            <td><%=book.getName()%>
+                            </td>
+                            <td><%=book.getCnt()%>
+                            </td>
+                            <td><%=book.getPrice()%>
+                            </td>
+                            <td><%=book.getYear_pub()%>
+                            </td>
+                            <td><%=PublishingOfficeDAO.getNamePOById(book.getId_po())%>
+                            </td>
+                            <td>
+                                <table>
+                                    <% for (AuthorEntity author:book.getAuthorEntities()) {%>
+                                    <tr>
+                                        <td><%=author.getLname()%>
+                                        </td>
+                                        <td><%=author.getFname()%>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <%}%>
+                </table>
+
+                <ul class="list-group list-group-horizontal">
+                    <li onclick="addBook()" class="list-group-item"><a href="#">Добавить запись</a></li>
                     <li onclick="updateBook()" class="list-group-item"><a href="#">Изменить запись</a></li>
                     <li onclick="deleteBook()" class="list-group-item"><a href="#">Удалить запись</a></li>
                 </ul>
@@ -96,12 +170,12 @@
                     alert("Выберите нужную строку!")
                 }
                 var table = document.getElementById('tables');
-                var location = '/updateBook?=';
-                location += encodeURI(table.rows[count + 1].cells[1].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[2].innerHTML)
-                    +"="+encodeURI(table.rows[count + 1].cells[3].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[4].innerHTML)
-                    +"="+encodeURI(table.rows[count + 1].cells[5].innerHTML)+"="+encodeURI(table.rows[count + 1].cells[6].innerHTML);
-                window.location = location;
-
+                var params = 'action=' + 'update' + '&id_b=' + encodeURI(table.rows[count + 1].cells[1].innerHTML);
+                window.location = '/editBook?'+params;
+            }
+            function addBook() {
+                var params = 'action=' + 'insert';
+                window.location = '/editBook?'+params;
             }
             function selectChaptersOnBook() {
                 var count = getnumb();

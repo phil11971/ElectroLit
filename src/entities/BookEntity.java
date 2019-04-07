@@ -1,6 +1,7 @@
 package entities;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Currency;
 
 public class BookEntity {
@@ -10,6 +11,7 @@ public class BookEntity {
     private int cnt;
     private BigDecimal price;
     private int id_po;
+    private ArrayList<AuthorEntity> authorEntities;
 
     public BookEntity() {
     }
@@ -33,6 +35,16 @@ public class BookEntity {
         this.cnt = cnt;
         this.price = price;
         this.id_po = id_po;
+    }
+
+    public BookEntity(int id_b, String name, int year_pub, int cnt, BigDecimal price, int id_po, ArrayList<AuthorEntity> authorEntities) {
+        this.id_b = id_b;
+        this.name = name;
+        this.year_pub = year_pub;
+        this.cnt = cnt;
+        this.price = price;
+        this.id_po = id_po;
+        this.authorEntities = authorEntities;
     }
 
     public int getId_b() {
@@ -75,11 +87,17 @@ public class BookEntity {
         this.price = price;
     }
 
-    public int getId_po() {
-        return id_po;
-    }
+    public int getId_po() { return id_po; }
 
     public void setId_po(int id_po) {
         this.id_po = id_po;
+    }
+
+    public ArrayList<AuthorEntity> getAuthorEntities() {
+        return authorEntities;
+    }
+
+    public void setAuthorEntities(ArrayList<AuthorEntity> authorEntities) {
+        this.authorEntities = authorEntities;
     }
 }

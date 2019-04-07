@@ -65,6 +65,10 @@
         function updatePO() {
             var namePO = document.getElementById("namePO");
             var adr = document.getElementById("adr");
+            if (namePO.value === "" || adr.value === "") {
+                alert("Введите недостающие поля");
+                return;
+            }
             var xhr = new XMLHttpRequest();
             var body = 'poId='+poId+'&namePO=' + encodeURIComponent(namePO.value)+'&adr=' + encodeURIComponent(adr.value);
             xhr.open("POST", "/updatePublishingOffice", false);

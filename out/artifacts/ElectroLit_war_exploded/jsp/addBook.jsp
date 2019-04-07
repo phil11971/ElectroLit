@@ -41,7 +41,7 @@
                     <td>
                     <td><b>Издательство:</b></td>
                     <td>
-                        <select id = "poId" >
+                        <select id="poId" class="custom-select" multiple>
                             <c:forEach var="i" items="${idPOList}">
                                 <option value =  ${i.key}>
                                         ${i.value}
@@ -70,6 +70,11 @@
             var pages = document.getElementById("pages");
             var price = document.getElementById("price");
             var poId = document.getElementById("poId");
+
+            if (title.value === "" || year.value === "" || pages.value === "" || price.value === "" || poId.value === "") {
+                alert("Введите недостающие поля");
+                return;
+            }
 
             var xhr = new XMLHttpRequest();
             var body = 'title=' + encodeURIComponent(title.value) + '&year=' + encodeURIComponent(year.value)+ '&pages=' + encodeURIComponent(pages.value)+ '&price=' + encodeURIComponent(price.value)+ '&poId=' + encodeURIComponent(poId.value);

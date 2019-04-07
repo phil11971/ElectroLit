@@ -4,15 +4,16 @@ import entities.AuthorEntity;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class AuthorDAO {
 
-    public static List<AuthorEntity> select() throws SQLException {
+    public static ArrayList<AuthorEntity> select() throws SQLException {
         try(Connection connection = ConnectionDB.getConnection()) {
             ResultSet set = connection.createStatement().executeQuery("SELECT * FROM public.\"Author\"");
-            List list = new LinkedList<AuthorEntity>();
+            ArrayList list = new ArrayList<AuthorEntity>();
 
             while (set.next())
                 list.add(new AuthorEntity(

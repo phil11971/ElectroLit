@@ -59,6 +59,11 @@
             var title = document.getElementById("title");
             var bookId = document.getElementById("bookId");
 
+            if (title.value === "" || bookId.value === "") {
+                alert("Введите недостающие поля");
+                return;
+            }
+
             var xhr = new XMLHttpRequest();
             var body = 'title=' + encodeURIComponent(title.value) + '&bookId=' + encodeURIComponent(bookId.value);
             xhr.open('POST', '/addChapter', false);
