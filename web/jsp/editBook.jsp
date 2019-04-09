@@ -1,8 +1,6 @@
 <%@ page import="entities.BookEntity" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="entities.AuthorEntity" %>
-<%@ page import="java.sql.Date" %>
-<%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Vladislav
@@ -96,7 +94,11 @@
                                             <%for(AuthorEntity authorEntity:authors)
                                             {
                                                 if(!a.getAuthorEntities().contains(authorEntity)){%>
-                                            <option value="<%=authorEntity.getId_a()%>"><%=authorEntity.getLname()+" "+authorEntity.getFname()%></option><%}%>
+                                                    <option value="<%=authorEntity.getId_a()%>"><%=authorEntity.getLname()+" "+authorEntity.getFname()%></option>
+                                                <%}%>
+                                                <%if(a.getAuthorEntities().contains(authorEntity)){%>
+                                                    <option selected value="<%=authorEntity.getId_a()%>"><%=authorEntity.getLname()+" "+authorEntity.getFname()%></option>
+                                                <%}%>
                                             <%}%>
                                         </select>
                                 </td>

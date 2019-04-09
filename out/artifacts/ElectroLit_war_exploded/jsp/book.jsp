@@ -86,7 +86,6 @@
                     <%
                         for (BookEntity book : books) {
                     %>
-                    <form action="EditBook" method="get">
                         <tr>
                             <td><input type="radio" name="r"></td>
                             <td><%=book.getId_b()%></td>

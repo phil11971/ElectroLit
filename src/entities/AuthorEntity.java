@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class AuthorEntity {
     private int id_a;
     private String lname;
@@ -7,6 +9,24 @@ public class AuthorEntity {
     private String patr;
     private String mail;
     private String dob;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AuthorEntity that = (AuthorEntity) o;
+        return id_a == that.id_a &&
+                lname.equals(that.lname) &&
+                fname.equals(that.fname) &&
+                Objects.equals(patr, that.patr) &&
+                Objects.equals(mail, that.mail) &&
+                Objects.equals(dob, that.dob);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_a, lname, fname, patr, mail, dob);
+    }
 
     public AuthorEntity() {
     }
