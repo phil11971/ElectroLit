@@ -6,7 +6,7 @@ public class ConnectionDB {
 
     private final static String URL = "jdbc:postgresql://localhost:5432/ElectronicLiterature";
     private final static String USERNAME = "postgres";
-    private final static String PASS = "aser47wd";
+    private final static String PASS = "";
 
     public static Connection getConnection() {
         Connection connection = null;
